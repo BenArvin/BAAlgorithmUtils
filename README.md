@@ -1,6 +1,7 @@
 # BAAlgorithmUtils
 algorithm utils for python
 
-| algorithm | code file |
+| Algorithm | Code file |
 | :--- | :--- |
 | Tire tree | `BATireTreeUtil.py` |
+| Aho-Corasick | `BAAhoCorasickUtil.py` |
