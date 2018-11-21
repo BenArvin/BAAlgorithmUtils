@@ -2,10 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import sys, os
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
-sys.path.append('../')
 from BATireTreeUtil import BATireTree
 
 if __name__ == '__main__':

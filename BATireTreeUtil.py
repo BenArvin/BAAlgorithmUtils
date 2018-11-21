@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+#Python3 required!
+
 import sys, os
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
 class BATireTreeNode(object):
 

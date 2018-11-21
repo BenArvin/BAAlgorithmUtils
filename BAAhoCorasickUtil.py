@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+#Python3 required!
+
 import sys, os
-reload(sys)
-sys.setdefaultencoding("utf-8")
 from BAClassUtil import BAClassUtil
 
 class BAACTireTreeNode(object):
@@ -134,7 +134,7 @@ class BAAhoCorasickUtil(object):
 		key = node.endContent
 		value = location - len(node.endContent) + 1
 		listTmp = []
-		if resultDic.has_key(key):
+		if key in resultDic:
 			listTmp = resultDic[key]
 		listTmp.append(value)
 		resultDic[key] = listTmp
