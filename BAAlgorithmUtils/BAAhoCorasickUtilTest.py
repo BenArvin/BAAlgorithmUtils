@@ -2,6 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 import sys, os
+sys.path.append('../')
 
 from BAAlgorithmUtils.BAAhoCorasickUtil import BAAhoCorasickUtil
 
