@@ -5,5 +5,13 @@
 # python
 *.pyc
 
-#vscode
+# vscode
 /.vscode
+
+# pipenv
+__pycache__
+*.egg-info
+build
+dist
+*.lock
+.venv

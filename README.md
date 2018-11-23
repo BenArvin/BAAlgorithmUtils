@@ -1,7 +1,11 @@
 # BAAlgorithmUtils
-algorithm utils for python
+Algorithm utils for python
 
-| Algorithm | Code file |
-| :--- | :--- |
-| Tire tree | `BATireTreeUtil.py` |
-| Aho-Corasick | `BAAhoCorasickUtil.py` |
+| Algorithm | Code file | Example |
+| :--- | :--- | :--- |
+| Tire tree | `BATireTreeUtil.py` | `BATireTreeUtilTest.py` |
+| Aho-Corasick | `BAAhoCorasickUtil.py` | `BAAhoCorasickUtilTest.py` |
+
+Other utils:
+
+- `BAClassUtil.py`

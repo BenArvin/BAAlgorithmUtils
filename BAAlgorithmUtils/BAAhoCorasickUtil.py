@@ -4,7 +4,7 @@
 #Python3 required!
 
 import sys, os
-from BAClassUtil import BAClassUtil
+from BAAlgorithmUtils.BAClassUtil import BAClassUtil
 
 class BAACTireTreeNode(object):
 

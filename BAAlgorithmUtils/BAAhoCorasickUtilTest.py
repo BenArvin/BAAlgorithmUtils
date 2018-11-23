@@ -3,7 +3,7 @@
 
 import sys, os
 
-from BAAhoCorasickUtil import BAAhoCorasickUtil
+from BAAlgorithmUtils.BAAhoCorasickUtil import BAAhoCorasickUtil
 
 def start(trainSamples, experimentalValues):
 	print('\n********************************')

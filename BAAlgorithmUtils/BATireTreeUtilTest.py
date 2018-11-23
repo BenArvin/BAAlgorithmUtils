@@ -3,7 +3,7 @@
 
 import sys, os
 
-from BATireTreeUtil import BATireTree
+from BAAlgorithmUtils.BATireTreeUtil import BATireTree
 
 if __name__ == '__main__':
 	treeInstance = BATireTree()
