@@ -1,1 +1,1 @@
-__all__ = ['BAAhoCorasickUtil', 'BATireTreeUtil', 'BAClassUtil']
+__all__ = ['BAAhoCorasickUtil', 'BATireTreeUtil', 'BAClassUtil', 'BAKMPUtil']
