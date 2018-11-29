@@ -26,4 +26,7 @@ def start(trainSamples, experimentalValues):
 if __name__ == '__main__':
 	start(['hers', 'his', 'she'], ['ushers', 'shersushis', 'shersushishe'])
 	start(['nihao', 'hao', 'hs', 'hsr'], ['sdmfhsgnshejfgnihaofhsrnihao'])
+	start(['nihao', 'hao', 'haoa'], ['unihaoabc'])
+	start(['nihao', 'hao', 'ao'], ['unihaoabc'])
+	start(['nihao', 'hao', 'ao', 'a'], ['unihaoabc'])
 	start(['ab', 'bab', 'bca', 'caa'], ['abccab'])

@@ -35,6 +35,8 @@ class BAACTireTree(object):
 
 	def __init__(self):
 		self.root = BAACTireTreeNode()
+		self.__keyForTerminal = 'terminal'
+		self.__keyForPassing = 'passing'
 
 	def train(self, sample):
 		if sample == None or isinstance(sample, str) == False or len(sample) == 0:
@@ -85,22 +87,52 @@ class BAACTireTree(object):
 	def automatize(self):
 		self.__automatizeLoop(None, self.root)
 
-	def react(self, currentNode, key):
+	def __buildBlankResult(self):
+		return {self.__keyForTerminal: self.root, self.__keyForPassing: []}
+
+	def __react(self, currentNode, key):
+		result = self.__buildBlankResult()
 		if currentNode == None:
-			return None
-		if key == None or isinstance(key, str) == False or len(key) == 0:
-			return None
+			return result
 		currentNodeTmp = currentNode
-		result = None
-		if (currentNodeTmp.children == None or len(currentNodeTmp.children) == 0) and currentNodeTmp.bastard != None:
-			currentNodeTmp = currentNodeTmp.bastard
-		for keyTmp, child in currentNodeTmp.children.items():
-			if keyTmp == key:
-				result = child
+		resultTerminal = self.root
+		resultPassing = []
+		while True:
+			if currentNodeTmp.children == None or len(currentNodeTmp.children) == 0:
+				#jump
+				currentNodeTmp = currentNodeTmp.bastard
+				resultPassing.append(currentNodeTmp)
+				continue
+			
+			rightChild = None
+			for keyTmp, child in currentNodeTmp.children.items():
+				if keyTmp == key:
+					rightChild = child
+					break
+			if rightChild == None:
+				if currentNodeTmp == self.root:
+					#stop
+					resultTerminal = currentNodeTmp
+					break
+				else:
+					#jump
+					currentNodeTmp = currentNodeTmp.bastard
+					resultPassing.append(currentNodeTmp)
+			else:
+				#stop
+				resultTerminal = rightChild
 				break
-		if result == None:
-			result = self.root
+		result[self.__keyForTerminal] = resultTerminal
+		result[self.__keyForPassing] = resultPassing
 		return result
+
+	def react(self, currentNode, key):
+		if key == None or isinstance(key, str) == False or len(key) == 0:
+			return self.__buildBlankResult()
+		return self.__react(currentNode, key)
+
+	def finialCheck(self, currentNode):
+		return self.__react(currentNode, None)
 
 	def fullPrint(self, currentNode):
 		if currentNode == None:
@@ -143,13 +175,20 @@ class BAAhoCorasickUtil(object):
 	def search(self, content):
 		result = {}
 		nodeTmp = self.__acTree.root
-		for i in range(len(content)):
-			nodeTmp = self.__acTree.react(nodeTmp, content[i])
-			if nodeTmp != None:
-				if nodeTmp.isEndPoint == True:
-					result = self.__saveSearchResult(result, nodeTmp, i)
-				if (nodeTmp.children == None or len(nodeTmp.children) == 0) and nodeTmp.bastard != None and nodeTmp.bastard.isEndPoint == True:
-					result = self.__saveSearchResult(result, nodeTmp.bastard, i)
+		contentLength = len(content)
+		for i in range(0, contentLength + 1, 1):
+			resultTmp = None
+			if i == contentLength:
+				resultTmp = self.__acTree.finialCheck(nodeTmp)
+			else:
+				resultTmp = self.__acTree.react(nodeTmp, content[i])
+			nextNode = resultTmp['terminal']
+			allNodeNeedCheck = resultTmp['passing']
+			allNodeNeedCheck.append(nextNode)
+			for item in allNodeNeedCheck:
+				if item.isEndPoint == True:
+					result = self.__saveSearchResult(result, item, i)
+			nodeTmp = nextNode
 		return result
 
 	def fullPrint(self):
