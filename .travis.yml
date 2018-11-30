@@ -1,20 +1,28 @@
 language: python
+
 python:
-- '3.4'
-- '3.5'
-- '3.6'
+# - '3.4'
+# - '3.5'
+# - '3.6'
 - '3.7-dev'
+
 sudo: required
+
 before_install:
 - chmod +x travis/travis_install.sh
+
 install:
 - travis/travis_install.sh
+
 before_script:
 - chmod +x travis/travis_script.sh
+
 script:
 - travis/travis_script.sh
+
 # after_success:
 # - travis/travis_after_success.sh
+
 deploy:
   provider: pypi
   user: BenArvin
@@ -22,4 +30,3 @@ deploy:
     secure: R5+CVXS5eIur9zCDZLMAIudNc0xb6Hsx7JWlrOBv32ZUM3ENPzdNcLOS8cjkNloiH5IKXROdxNIyL+3FD43LiiohmXrxlsw4hx5XlZhEOB0Kz4xiDLqqp6HJi9+3kf4dRO23tN8XjhdETjiYv+L4SeNlZy98Cyo4cPUpBhFu3N36Z8dCmMwui7KZCgJZlMexqtWdH6UygNEDYozzo9/cmQxcMwJDGyRYYl8CQlYrreP5dmS13Z1PGszIK6DHgabm289Bit25MJNRx1ONzdm4odD5m3mUbbMcJWkHCzxqkn8GTaMrJRIdzBT+FTbtUvN8cDegEftlZ78sGcktjKVkkZrlGDmfZ26hhg8NmE80WG2TNxMpjSRY8h8twEIGKyKkVJq+jHwkiyGfKCyLpbRyo0lr476X5z7rgZYC0FA+yNKlnQQ5XivYtWzgUhWu/CrxPWIkNaRFr7a27ynR5zkQSbg8L6Snw0QabUUgfgl+rMV1XvwwYvasqaLjHxrUrigkDXAT79n+2TNcmMgClcM7UL55ukfaITl1zNK/SBGveJsK25mGU0+6AhJ9L0jswFOsuPKDxVF95LPs03LtKqYYtx01Cek0YN26zLs82QteZm4h2Ba2Kcg+37SdW73Hr/o/22S+3s3yKXmULU5zpe4D8GRX2jpXCH+mP8LXGuPoLxI=
   on:
     tags: true
-    branch: master
