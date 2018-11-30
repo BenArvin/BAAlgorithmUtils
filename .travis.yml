@@ -1,0 +1,32 @@
+language: python
+
+python:
+# - '3.4'
+# - '3.5'
+# - '3.6'
+- '3.7-dev'
+
+sudo: required
+
+before_install:
+- chmod +x travis/travis_install.sh
+
+install:
+- travis/travis_install.sh
+
+before_script:
+- chmod +x travis/travis_script.sh
+
+script:
+- travis/travis_script.sh
+
+# after_success:
+# - travis/travis_after_success.sh
+
+deploy:
+  provider: pypi
+  user: ${U_NAME}
+  password:
+    secure: ${U_SECURE}
+  on:
+    tags: true
