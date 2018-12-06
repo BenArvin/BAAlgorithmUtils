@@ -10,6 +10,7 @@ Algorithm utils for python
 | Tire tree | `BATireTreeUtil.py` | `BATireTreeUtilTest.py` |
 | Aho-Corasick | `BAAhoCorasickUtil.py` | `BAAhoCorasickUtilTest.py` |
 | KMP | `BAKMPUtil.py` | `BAKMPUtilTest.py` |
+| Boyer-Moore | `BABMUtil.py` | `BABMUtilTest.py` |
 
 Other utils:
 
