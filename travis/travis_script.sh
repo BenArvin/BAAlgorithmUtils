@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#remove last build packages
+#remove last build result
+sudo rm -rf /build/*
 sudo rm -rf /dist/*
 
 #build new packages
