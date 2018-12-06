@@ -8,23 +8,14 @@ import sys, os
 class BAKMPUtil(object):
     def __init__(self):
         super(BAKMPUtil, self).__init__()
-        self.__PMTable = []
+        self.PMTable = []
         self.__tableItemValueKey = 'value'
         self.__tableItemCountKey = 'count'
-    
-    def printPMTable(self):
-        valueString = ''
-        countString = ''
-        for tableItem in self.__PMTable:
-            valueString = valueString + str(tableItem[self.__tableItemValueKey]) + '\t'
-            countString = countString + str(tableItem[self.__tableItemCountKey]) + '\t'
-        print(valueString)
-        print(countString)
 
     def setMatcher(self, matcher):
         if matcher == None or len(matcher) == 0:
             return
-        self.__PMTable = []
+        self.PMTable = []
         for i in range(len(matcher)):
             matcherTmp = matcher[0 : i + 1]
             matchCount = 0
@@ -41,9 +32,9 @@ class BAKMPUtil(object):
                         if len(suffixTmp) >= matchCount:
                             matchCount = len(suffixTmp)
             tableItem = {self.__tableItemValueKey: matcher[i], self.__tableItemCountKey: matchCount}
-            self.__PMTable.append(tableItem)
+            self.PMTable.append(tableItem)
     
-    def __searchLoop(self, content, start, machedCount, result):
+    def __searchLoop(self, content, duplMode, start, machedCount, result):
         if start + machedCount >= (len(content) - 1):
             return
 
@@ -51,16 +42,19 @@ class BAKMPUtil(object):
         lastMatchedTableItem = None
         for i in range(start + machedCount, len(content), 1):
             currentChar = content[i]
-            tableItem = self.__PMTable[machedCount + tableOffset]
+            tableItem = self.PMTable[machedCount + tableOffset]
             tableItemValue = tableItem[self.__tableItemValueKey]
             if tableItemValue == currentChar:
                 #matched
                 tableOffset = tableOffset + 1
                 lastMatchedTableItem = tableItem
-                if (tableOffset + machedCount) == len(self.__PMTable):
+                if (tableOffset + machedCount) == len(self.PMTable):
                     #finded!
                     result.append(start)
-                    self.__searchLoop(content, start + len(self.__PMTable), 0, result)
+                    if duplMode == True:
+                        self.__searchLoop(content, duplMode, start + 1, 0, result)
+                    else:
+                        self.__searchLoop(content, duplMode, start + len(self.PMTable), 0, result)
                     break
             else:
                 #jump(matched count - PMTable count of this char)
@@ -70,10 +64,10 @@ class BAKMPUtil(object):
                 offsetForNextLoop = tableOffset - jumpCount
                 if offsetForNextLoop == 0:
                     offsetForNextLoop = 1
-                self.__searchLoop(content, start + offsetForNextLoop, jumpCount, result)
+                self.__searchLoop(content, duplMode, start + offsetForNextLoop, jumpCount, result)
                 break
 
-    def search(self, content):
+    def search(self, content, duplMode):
         result = []
-        self.__searchLoop(content, 0, 0, result)
+        self.__searchLoop(content, duplMode, 0, 0, result)
         return result
