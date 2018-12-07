@@ -22,9 +22,6 @@ def testFunc(matcher, content, duplMode):
     print('\n')
 
 if __name__ == '__main__':
-    testFunc('example', '', False)
-    testFunc('abcdd', '', False)
-    testFunc('acddbcdd', '', False)
     testFunc('FGFAEFG', 'ABCDEFGHIJKL', False)
     testFunc('AEFAEF', 'ABCDEFGHIJKL', False)
     testFunc('AEFAEF', 'ABCDEFGHIJKLAEFAEFTYB', False)

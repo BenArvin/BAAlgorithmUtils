@@ -27,22 +27,22 @@ class BABMUtil(object):
         badCharLocations = []
         if char in self.badCharTable:
             badCharLocations = self.badCharTable[char]
-        for i in range(len(badCharLocations) - 1, 0, -1):
-            locationTmp = badCharLocations[i]
+        for i in range(len(badCharLocations), 0, -1):
+            locationTmp = badCharLocations[i - 1]
             if locationTmp < stopLocation:
-                return stopLocation - locationTmp
-        return stopLocation + 1
+                return stopLocation - locationTmp - 1
+        return stopLocation
 
     def __buildGoodSuffixDic(self, matcher):
         self.goodSuffixTable = {}
         matcherLen = len(matcher)
-        for i in range(matcherLen - 1, 0, -1):
-            tmpSuffix = matcher[i : matcherLen]
+        for i in range(matcherLen, 1, -1):
+            tmpSuffix = matcher[i - 1 : matcherLen]
             tmpSuffixLen = len(tmpSuffix)
             finded = False
             locationTmp = matcherLen - tmpSuffixLen - 1
             while True:
-                if locationTmp < 0 - tmpSuffixLen:
+                if locationTmp <= 0 - tmpSuffixLen:
                     break
                 matchedThisTime = True
                 for j in range(0, tmpSuffixLen, 1):
@@ -56,7 +56,7 @@ class BABMUtil(object):
                 locationTmp = locationTmp - 1
             
             if finded == True:
-                self.goodSuffixTable[tmpSuffix] = i - locationTmp
+                self.goodSuffixTable[tmpSuffix] = i - 1 - locationTmp
             else:
                 self.goodSuffixTable[tmpSuffix] = matcherLen
     
@@ -78,9 +78,9 @@ class BABMUtil(object):
         finded = True
         offsetNextLoop = len(matcher)
         matchedPart = ""
-        for i in range(len(matcher) - 1, 0, -1):
-            currentContentChar = content[start + i]
-            currentMatcherChar = matcher[i]
+        for i in range(len(matcher), 0, -1):
+            currentContentChar = content[start + i - 1]
+            currentMatcherChar = matcher[i - 1]
             if currentContentChar != currentMatcherChar:
                 offsetOfBadChar = self.__getOffsetByBadCharRule(currentContentChar, i)
                 offsetOfGoodSuffix = self.__getOffsetByGoodSuffixRule(matchedPart)
