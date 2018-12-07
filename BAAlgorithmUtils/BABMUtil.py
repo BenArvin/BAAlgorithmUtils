@@ -13,25 +13,42 @@ class BABMUtil(object):
         self.goodSuffixTable = {}
 
     def __buildBadCharDic(self, matcher):
-        self.badCharTable = {}
+        #find positions every char
+        charLocations = {}
         matcherLen = len(matcher)
         for i in range(matcherLen):
             currentChar = matcher[i]
             locations = []
-            if currentChar in self.badCharTable:
-                locations = self.badCharTable[currentChar]
+            if currentChar in charLocations:
+                locations = charLocations[currentChar]
             locations.append(i)
-            self.badCharTable[currentChar] = locations
+            charLocations[currentChar] = locations
+        
+        #build badCharTable
+        self.badCharTable = {}
+        for i in range(matcherLen, 0, -1):
+            for charTmp in charLocations.keys():
+                innerResult = {}
+                if charTmp in self.badCharTable:
+                    innerResult = self.badCharTable[charTmp]
+                locationsTmp = charLocations[charTmp]
+                finded = False
+                for j in range(len(locationsTmp), 0, -1):
+                    locationTmp = locationsTmp[j - 1]
+                    if locationTmp <= i - 1:
+                        innerResult[str(i - 1)] = locationTmp
+                        finded = True
+                        break
+                if finded == False:
+                    innerResult[str(i - 1)] = -1
+                self.badCharTable[charTmp] = innerResult
 
     def __getOffsetByBadCharRule(self, char, stopLocation):
-        badCharLocations = []
         if char in self.badCharTable:
-            badCharLocations = self.badCharTable[char]
-        for i in range(len(badCharLocations), 0, -1):
-            locationTmp = badCharLocations[i - 1]
-            if locationTmp < stopLocation:
-                return stopLocation - locationTmp - 1
-        return stopLocation
+            innerLocationTable = self.badCharTable[char]
+            return stopLocation - innerLocationTable[str(stopLocation)]
+        else:
+            return stopLocation + 1
 
     def __buildGoodSuffixDic(self, matcher):
         self.goodSuffixTable = {}
@@ -82,7 +99,7 @@ class BABMUtil(object):
             currentContentChar = content[start + i - 1]
             currentMatcherChar = matcher[i - 1]
             if currentContentChar != currentMatcherChar:
-                offsetOfBadChar = self.__getOffsetByBadCharRule(currentContentChar, i)
+                offsetOfBadChar = self.__getOffsetByBadCharRule(currentContentChar, i - 1)
                 offsetOfGoodSuffix = self.__getOffsetByGoodSuffixRule(matchedPart)
                 offsetNextLoop = max(offsetOfBadChar, offsetOfGoodSuffix)
                 finded = False
