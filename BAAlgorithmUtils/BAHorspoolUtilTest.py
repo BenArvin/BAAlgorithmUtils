@@ -15,7 +15,7 @@ def testFunc(matcher, content, duplMode):
     print('duplMode: ' + str(duplMode))
     horspoolUtil = BAHorspoolUtil()
     horspoolUtil.setMatcher(matcher)
-    print('offset table: ' + str(horspoolUtil.offsetTable))
+    print('offset table: ' + str(horspoolUtil.charLocationTable))
     result = horspoolUtil.search(content, duplMode)
     print('result: ' + str(result))
     print('\n')

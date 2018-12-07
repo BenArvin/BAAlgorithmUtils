@@ -9,34 +9,51 @@ class BAHorspoolUtil(object):
     def __init__(self):
         super(BAHorspoolUtil, self).__init__()
         self.__matcher = None
-        self.offsetTable = {}
+        self.charLocationTable = {}
 
-    def __buildOffsetTable(self, matcher):
-        self.offsetTable = {}
+    def __buildCharLocationTable(self, matcher):
+        #find positions every char
+        charLocations = {}
         matcherLen = len(matcher)
         for i in range(matcherLen):
             currentChar = matcher[i]
             locations = []
-            if currentChar in self.offsetTable:
-                locations = self.offsetTable[currentChar]
+            if currentChar in charLocations:
+                locations = charLocations[currentChar]
             locations.append(i)
-            self.offsetTable[currentChar] = locations
+            charLocations[currentChar] = locations
+        
+        #build charLocationTable
+        self.charLocationTable = {}
+        for i in range(matcherLen, 0, -1):
+            for charTmp in charLocations.keys():
+                innerResult = {}
+                if charTmp in self.charLocationTable:
+                    innerResult = self.charLocationTable[charTmp]
+                locationsTmp = charLocations[charTmp]
+                finded = False
+                for j in range(len(locationsTmp), 0, -1):
+                    locationTmp = locationsTmp[j - 1]
+                    if locationTmp <= i - 1:
+                        innerResult[str(i - 1)] = locationTmp
+                        finded = True
+                        break
+                if finded == False:
+                    innerResult[str(i - 1)] = -1
+                self.charLocationTable[charTmp] = innerResult
 
     def __getOffset(self, flagChar, stopLocation, matcherLen):
-        badCharLocations = []
-        if flagChar in self.offsetTable:
-            badCharLocations = self.offsetTable[flagChar]
-        for i in range(len(badCharLocations), 0, -1):
-            locationTmp = badCharLocations[i-1]
-            if locationTmp < stopLocation:
-                return matcherLen - 1 - locationTmp
-        return matcherLen
+        if flagChar in self.charLocationTable:
+            innerLocationTable = self.charLocationTable[flagChar]
+            return matcherLen - 1 - innerLocationTable[str(stopLocation)]
+        else:
+            return matcherLen
 
     def setMatcher(self, matcher):
         if matcher == None or len(matcher) == 0:
             return
         self.__matcher = matcher
-        self.__buildOffsetTable(self.__matcher)
+        self.__buildCharLocationTable(self.__matcher)
         
     def __searchLoop(self, content, duplMode, matcher, start, result):
         if start + len(matcher) > len(content):
