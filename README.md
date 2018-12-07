@@ -11,6 +11,7 @@ Algorithm utils for python
 | Aho-Corasick | `BAAhoCorasickUtil.py` | `BAAhoCorasickUtilTest.py` |
 | KMP | `BAKMPUtil.py` | `BAKMPUtilTest.py` |
 | Boyer-Moore | `BABMUtil.py` | `BABMUtilTest.py` |
+| Horspool | `BAHorspoolUtil.py` | `BAHorspoolUtilTest.py` |
 
 Other utils:
 
