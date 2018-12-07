@@ -12,7 +12,7 @@ class BAHorspoolUtil(object):
         self.charLocationTable = {}
 
     def __buildCharLocationTable(self, matcher):
-        #find positions char appeared
+        #find positions every char
         charLocations = {}
         matcherLen = len(matcher)
         for i in range(matcherLen):
