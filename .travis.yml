@@ -8,6 +8,13 @@ python:
 
 sudo: required
 
+notifications:
+  email:
+    recipients:
+      - niedongsen@yeah.net
+    on_success: always
+    on_failure: always
+
 # if: type != push OR (tag IS blank AND branch = master)
 # if: type != push OR (tag IS present AND branch = master)
 # if: tag IS present AND branch = master
@@ -38,7 +45,3 @@ deploy:
   on:
     all_branches: true
     tags: true
-
-notifications:
-  email:
-    - ${U_EMAIL_1}
