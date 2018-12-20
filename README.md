@@ -12,6 +12,7 @@ Algorithm utils for python
 | KMP | `BAKMPUtil.py` | `BAKMPUtilTest.py` |
 | Boyer-Moore | `BABMUtil.py` | `BABMUtilTest.py` |
 | Horspool | `BAHorspoolUtil.py` | `BAHorspoolUtilTest.py` |
+| SBOM | `BASBOMUtil.py` | `BASBOMUtilTest.py` |
 
 Other utils:
 
