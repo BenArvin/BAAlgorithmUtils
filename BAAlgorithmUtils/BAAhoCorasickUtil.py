@@ -183,11 +183,16 @@ class BAAhoCorasickUtil(object):
 			else:
 				resultTmp = self.__acTree.react(nodeTmp, content[i])
 			nextNode = resultTmp['terminal']
-			allNodeNeedCheck = resultTmp['passing']
-			allNodeNeedCheck.append(nextNode)
-			for item in allNodeNeedCheck:
-				if item.isEndPoint == True:
-					result = self.__saveSearchResult(result, item, i)
+			nodeNeedSave = nextNode
+			while True:
+				if nodeNeedSave == None:
+					break
+				if nodeNeedSave.isEndPoint == True:
+					result = self.__saveSearchResult(result, nodeNeedSave, i)
+				nodeNeedSaveTmp = nodeNeedSave.bastard
+				if nodeNeedSave == self.__acTree.root and nodeNeedSave == nodeNeedSaveTmp:
+					break
+				nodeNeedSave = nodeNeedSaveTmp
 			nodeTmp = nextNode
 		return result
 
