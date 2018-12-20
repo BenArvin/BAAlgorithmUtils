@@ -29,6 +29,7 @@ if __name__ == '__main__':
 	start(['nihao', 'hao', 'haoa'], ['unihaoabc'])
 	start(['nihao', 'hao', 'ao'], ['unihaoabc'])
 	start(['nihao', 'hao', 'ao', 'a'], ['unihaoabc'])
+	start(['nihao', 'hao', 'ao', 'a'], ['anihao'])
 	start(['ab', 'bab', 'bca', 'caa'], ['abccab'])
 	start(['aa'], ['aaaaaaaaa'])
 	start(['aaa'], ['aaaaaaaaa'])

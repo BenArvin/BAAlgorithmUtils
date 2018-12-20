@@ -131,9 +131,6 @@ class BAACTireTree(object):
 			return self.__buildBlankResult()
 		return self.__react(currentNode, key)
 
-	def finialCheck(self, currentNode):
-		return self.__react(currentNode, None)
-
 	def fullPrint(self, currentNode):
 		if currentNode == None:
 			return
@@ -176,12 +173,8 @@ class BAAhoCorasickUtil(object):
 		result = {}
 		nodeTmp = self.__acTree.root
 		contentLength = len(content)
-		for i in range(0, contentLength + 1, 1):
-			resultTmp = None
-			if i == contentLength:
-				resultTmp = self.__acTree.finialCheck(nodeTmp)
-			else:
-				resultTmp = self.__acTree.react(nodeTmp, content[i])
+		for i in range(0, contentLength, 1):
+			resultTmp = self.__acTree.react(nodeTmp, content[i])
 			nextNode = resultTmp['terminal']
 			nodeNeedSave = nextNode
 			while True:
