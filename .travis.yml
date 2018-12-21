@@ -39,9 +39,7 @@ deploy:
   skip_existing: true
   provider: pypi
   user: ${U_NAME}
-  password:
-    secure: Fg4gQtTPGsfa8GFO+eeeBITfMavuLvkRA9sOsj+/py6Sr2ojOa8G1rfj63LP+sF9Eqb4E3KO77/DqXQfrs3GyVt8NktPOQ7B9zMGW+h9DDNrqmqGLan1ElpwnLrBnKmlFpjObuudCVzpZFplOTnojRqHi1N6wXcLGxaSOBnDw0awgL+hSWtz3dFKC4RhlxFBOYkmYbkf0txKDqM9Vtl9cwtI41RKenFo15ysPuQI5k9D+zK+o1mA7y1J5zU4AsjblSLXkQLLxytiToIzJ3wkp8Ck2xRtO8RbWWfhuwABFKzRcdyJqxc8pTJbi4d8MIOsopTVqgcZWXwBsByfdUYAsMXDh5+uN204/G0EXLSoTn90dfwQTZ7wKb6o/HsJQZ4C/wuhQiR3ggsUNQa08MYUHX/fXwooDseOcjRvGBJTKlrJYL2ECOO+X6U1ZvHP+4s9zRwKBs7HouYpQzj1zzct0lajRIy02LjP4SdrwMBf+RxOkSTEpgcUf8B/Wl95SI1SDKrqqMI3WfoIRILDCytU+7mGRX6dtEeIt9euybAIGQq0ZiqLQHVpjT4CprwfwuWe6meFAPa+0vamopgVPnNmehSZNR0t8HAGTbaEFAiFAqSP0eJIBQugkmEVZ96/cgbKzlgsxyNlLYFuR04khJ1cOf1Gc0VTQekqBRt/u4OkD7k=
-    # secure: ${U_SECURE}
+  password: ${U_SECURE}
   on:
     all_branches: true
     tags: true
