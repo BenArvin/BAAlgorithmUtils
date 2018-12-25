@@ -130,16 +130,22 @@ class BASBOMPrefixTree(object):
     def __automatizeLoop(self, currentLayerNodes):
         if currentLayerNodes == None or len(currentLayerNodes) == 0:
             return
-        newLayerNodes = {}
-        for key, node in currentLayerNodes.items():
-            self.__automatizeSeeker(node, self.__getSNode(node.parent), key)
-            if node.children != None and len(node.children) > 0:
-                for childKey, childNode in node.children.items():
-                    newLayerNodes[childKey] = childNode
-        self.__automatizeLoop(newLayerNodes)
+        nextLayerNodes = []
+        for currentLayerNodeItem in currentLayerNodes:
+            currentLayerNode = currentLayerNodeItem['node']
+            self.__automatizeSeeker(currentLayerNode, self.__getSNode(currentLayerNode.parent), currentLayerNodeItem['key'])
+            if currentLayerNode.children != None and len(currentLayerNode.children) > 0:
+                for childKey, childNode in currentLayerNode.children.items():
+                    nextLayerNodeItem = {'key': childKey, 'node':childNode}
+                    nextLayerNodes.append(nextLayerNodeItem)
+        self.__automatizeLoop(nextLayerNodes)
 
     def automatize(self):
-        self.__automatizeLoop(self.root.children)
+        nextLayerNodes = []
+        for childKey, childNode in self.root.children.items():
+            nodeItemTmp = {'key': childKey, 'node':childNode}
+            nextLayerNodes.append(nodeItemTmp)
+        self.__automatizeLoop(nextLayerNodes)
 
     def react(self, currentNode, key):
         if currentNode.children != None and key in currentNode.children:
