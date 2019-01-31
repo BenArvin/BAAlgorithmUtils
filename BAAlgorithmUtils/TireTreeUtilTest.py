@@ -4,10 +4,10 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BATireTreeUtil import BATireTree
+from BAAlgorithmUtils.TireTreeUtil import TireTree
 
 if __name__ == '__main__':
-	treeInstance = BATireTree()
+	treeInstance = TireTree()
 	treeInstance.train('aababbaba')
 	treeInstance.train('aababba')
 	treeInstance.train('aababbabab')

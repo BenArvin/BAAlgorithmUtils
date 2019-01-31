@@ -4,9 +4,9 @@
 #Python3 required!
 
 import sys, os
-from BAAlgorithmUtils.BAClassUtil import BAClassUtil
+from BAAlgorithmUtils.ClassUtil import ClassUtil
 
-class BAACTireTreeNode(object):
+class ACTireTreeNode(object):
 
 	def __init__(self):
 		self.children = {}
@@ -31,10 +31,10 @@ class BAACTireTreeNode(object):
 		self.children[key] = node
 
 
-class BAACTireTree(object):
+class ACTireTree(object):
 
 	def __init__(self):
-		self.root = BAACTireTreeNode()
+		self.root = ACTireTreeNode()
 		self.__keyForTerminal = 'terminal'
 		self.__keyForPassing = 'passing'
 
@@ -45,7 +45,7 @@ class BAACTireTree(object):
 		for char in sample:
 			child = currentNode.search(char)
 			if child == None:
-				newChild = BAACTireTreeNode()
+				newChild = ACTireTreeNode()
 				currentNode.adopt(char, newChild)
 				newChild.parent = currentNode
 				currentNode = newChild
@@ -136,18 +136,18 @@ class BAACTireTree(object):
 			return
 		for key, child in currentNode.children.items():
 			if child.isEndPoint == True:
-				print(BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + BAClassUtil.hexAddress(child) + '(' + str(child.endContent) + ')')
+				print(ClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + ClassUtil.hexAddress(child) + '(' + str(child.endContent) + ')')
 			else:
-				print(BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + BAClassUtil.hexAddress(child))
+				print(ClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + ClassUtil.hexAddress(child))
 		if currentNode.bastard != None:
-			print('    ' + BAClassUtil.hexAddress(currentNode) + ' __> ' + BAClassUtil.hexAddress(currentNode.bastard))
+			print('    ' + ClassUtil.hexAddress(currentNode) + ' __> ' + ClassUtil.hexAddress(currentNode.bastard))
 		for key, child in currentNode.children.items():
 			self.fullPrint(child)
 
-class BAAhoCorasickUtil(object):
+class AhoCorasickUtil(object):
 	def __init__(self):
-		super(BAAhoCorasickUtil, self).__init__()
-		self.__acTree = BAACTireTree()
+		super(AhoCorasickUtil, self).__init__()
+		self.__acTree = ACTireTree()
 
 	def train(self, sample):
 		self.__acTree.train(sample)

@@ -3,7 +3,7 @@
 
 import sys, os
 
-class BAClassUtil(object):
+class ClassUtil(object):
 
 	@classmethod
 	def hexAddress(cls, object):

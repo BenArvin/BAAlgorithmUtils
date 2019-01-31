@@ -1,9 +1,9 @@
 __all__ = [
-    'BAAhoCorasickUtil',
-    'BATireTreeUtil',
-    'BAClassUtil',
-    'BAKMPUtil',
-    'BABMUtil',
-    'BAHorspoolUtil',
-    'BASBOMUtil',
-    'BABSTUtil']
+    'AhoCorasickUtil',
+    'TireTreeUtil',
+    'ClassUtil',
+    'KMPUtil',
+    'BMUtil',
+    'HorspoolUtil',
+    'SBOMUtil',
+    'BSTUtil']

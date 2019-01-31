@@ -5,9 +5,9 @@
 
 import sys, os
 
-class BABMUtil(object):
+class BMUtil(object):
     def __init__(self):
-        super(BABMUtil, self).__init__()
+        super(BMUtil, self).__init__()
         self.__matcher = None
         self.badCharTable = {}
         self.goodSuffixTable = {}

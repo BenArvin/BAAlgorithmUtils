@@ -4,7 +4,7 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BABSTUtil import BABSTUtil
+from BAAlgorithmUtils.BSTUtil import BSTUtil
 
 def start1():
     print('\n********************************')
@@ -20,7 +20,7 @@ def start1():
         {'key': 9, 'content': '9-1'},
     ]
     trainsString = ''
-    bstUtil = BABSTUtil()
+    bstUtil = BSTUtil()
     for sample in trainSamples:
         trainsString = trainsString + ', ' + str(sample['key'])
         bstUtil.set(sample['key'], sample['content'])
@@ -51,7 +51,7 @@ def start2():
         {'key': 3, 'content': '3-1'},
     ]
     trainsString = ''
-    bstUtil = BABSTUtil()
+    bstUtil = BSTUtil()
     for sample in trainSamples:
         trainsString = trainsString + ', ' + str(sample['key'])
         bstUtil.set(sample['key'], sample['content'])

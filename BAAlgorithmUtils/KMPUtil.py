@@ -5,9 +5,9 @@
 
 import sys, os
 
-class BAKMPUtil(object):
+class KMPUtil(object):
     def __init__(self):
-        super(BAKMPUtil, self).__init__()
+        super(KMPUtil, self).__init__()
         self.PMTable = []
         self.__tableItemValueKey = 'value'
         self.__tableItemCountKey = 'count'

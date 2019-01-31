@@ -5,7 +5,7 @@
 
 import sys, os
 
-class BATireTreeNode(object):
+class TireTreeNode(object):
 
 	def __init__(self):
 		self.content = None
@@ -29,10 +29,10 @@ class BATireTreeNode(object):
 			self.children.append(node)
 
 
-class BATireTree(object):
+class TireTree(object):
 
 	def __init__(self):
-		self.__startNode = BATireTreeNode()
+		self.__startNode = TireTreeNode()
 
 	def train(self, sample):
 		if sample == None or isinstance(sample, str) == False or len(sample) == 0:
@@ -41,7 +41,7 @@ class BATireTree(object):
 		for char in sample:
 			child = currentNode.search(char)
 			if child == None:
-				newChild = BATireTreeNode()
+				newChild = TireTreeNode()
 				newChild.content = char
 				currentNode.adopt(newChild)
 				currentNode = newChild
@@ -63,8 +63,3 @@ class BATireTree(object):
 			return True
 		else:
 			return False
-
-class BATireTreeUtil(object):
-	def __init__(self):
-		super(BATireTreeUtil, self).__init__()
-		

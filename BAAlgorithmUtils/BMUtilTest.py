@@ -6,14 +6,14 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BABMUtil import BABMUtil
+from BAAlgorithmUtils.BMUtil import BMUtil
 
 def testFunc(matcher, content, duplMode):
     print('\n')
     print('matcher: ' + matcher)
     print('content: ' + content)
     print('duplMode: ' + str(duplMode))
-    bmUtil = BABMUtil()
+    bmUtil = BMUtil()
     bmUtil.setMatcher(matcher)
     print('bad char offset: ' + str(bmUtil.badCharTable))
     print('good suffix offset: ' + str(bmUtil.goodSuffixTable))

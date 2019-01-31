@@ -6,14 +6,14 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BAHorspoolUtil import BAHorspoolUtil
+from BAAlgorithmUtils.HorspoolUtil import HorspoolUtil
 
 def testFunc(matcher, content, duplMode):
     print('\n')
     print('matcher: ' + matcher)
     print('content: ' + content)
     print('duplMode: ' + str(duplMode))
-    horspoolUtil = BAHorspoolUtil()
+    horspoolUtil = HorspoolUtil()
     horspoolUtil.setMatcher(matcher)
     print('offset table: ' + str(horspoolUtil.charLocationTable))
     result = horspoolUtil.search(content, duplMode)

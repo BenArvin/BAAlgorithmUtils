@@ -5,9 +5,9 @@
 
 import sys, os
 
-class BAHorspoolUtil(object):
+class HorspoolUtil(object):
     def __init__(self):
-        super(BAHorspoolUtil, self).__init__()
+        super(HorspoolUtil, self).__init__()
         self.__matcher = None
         self.charLocationTable = {}
 

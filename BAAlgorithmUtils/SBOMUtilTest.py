@@ -6,12 +6,12 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BASBOMUtil import BASBOMUtil
+from BAAlgorithmUtils.SBOMUtil import SBOMUtil
 
 def start(trainSamples, experimentalValues):
     print('\n********************************')
     trainsString = ''
-    sbomUtil = BASBOMUtil()
+    sbomUtil = SBOMUtil()
     for sample in trainSamples:
         trainsString = trainsString + ', ' + sample
         sbomUtil.train(sample)

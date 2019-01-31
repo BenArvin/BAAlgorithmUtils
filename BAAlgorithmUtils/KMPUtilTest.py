@@ -4,12 +4,12 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BAKMPUtil import BAKMPUtil
+from BAAlgorithmUtils.KMPUtil import KMPUtil
 
 def testFunc(matcher, content, duplMode):
     print('\n')
     print('matcher:')
-    kmpUtil = BAKMPUtil()
+    kmpUtil = KMPUtil()
     kmpUtil.setMatcher(matcher)
     valueString = ''
     countString = ''

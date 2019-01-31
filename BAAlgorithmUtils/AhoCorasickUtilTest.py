@@ -4,12 +4,12 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BAAhoCorasickUtil import BAAhoCorasickUtil
+from BAAlgorithmUtils.AhoCorasickUtil import AhoCorasickUtil
 
 def start(trainSamples, experimentalValues):
 	print('\n********************************')
 	trainsString = ''
-	acUtil = BAAhoCorasickUtil()
+	acUtil = AhoCorasickUtil()
 	for sample in trainSamples:
 		trainsString = trainsString + ', ' + sample
 		acUtil.train(sample)

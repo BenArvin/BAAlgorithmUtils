@@ -4,11 +4,11 @@
 #Python3 required!
 
 import sys, os
-from BAAlgorithmUtils.BAClassUtil import BAClassUtil
+from BAAlgorithmUtils.ClassUtil import ClassUtil
 
-class BASBOMTreeNode(object):
+class SBOMTreeNode(object):
     def __init__(self):
-        super(BASBOMTreeNode, self).__init__()
+        super(SBOMTreeNode, self).__init__()
         self.children = {}
         self.bastards = {}
         self.parent = None
@@ -32,10 +32,10 @@ class BASBOMTreeNode(object):
             return
         self.children[key] = node
 
-class BASBOMSuffixTree(object):
+class SBOMSuffixTree(object):
     def __init__(self):
-        super(BASBOMSuffixTree, self).__init__()
-        self.root = BASBOMTreeNode()
+        super(SBOMSuffixTree, self).__init__()
+        self.root = SBOMTreeNode()
         self.length = 0
     
     def train(self, suffix, endContent):
@@ -43,7 +43,7 @@ class BASBOMSuffixTree(object):
         for char in suffix:
             child = currentNode.search(char)
             if child == None:
-                newChild = BASBOMTreeNode()
+                newChild = SBOMTreeNode()
                 currentNode.adopt(char, newChild)
                 newChild.parent = currentNode
                 currentNode = newChild
@@ -65,22 +65,22 @@ class BASBOMSuffixTree(object):
             return
         if currentNode.children == None or len(currentNode.children) == 0:
             if currentNode == self.root:
-                print('        ' + BAClassUtil.hexAddress(currentNode) + '(' + str(currentNode.endContent) + ')')
+                print('        ' + ClassUtil.hexAddress(currentNode) + '(' + str(currentNode.endContent) + ')')
             return
         for key, child in currentNode.children.items():
             if child.isEndPoint == True:
-                print('        ' + BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' >>> ' + BAClassUtil.hexAddress(child) + '(' + str(child.endContent) + ')')
+                print('        ' + ClassUtil.hexAddress(currentNode) + ' + ' + key + ' >>> ' + ClassUtil.hexAddress(child) + '(' + str(child.endContent) + ')')
             else:
-                print('        ' + BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' >>> ' + BAClassUtil.hexAddress(child))
+                print('        ' + ClassUtil.hexAddress(currentNode) + ' + ' + key + ' >>> ' + ClassUtil.hexAddress(child))
         for key, child in currentNode.children.items():
             self.fullPrint(child)
 
-class BASBOMPrefixTree(object):
+class SBOMPrefixTree(object):
     def __init__(self):
-        super(BASBOMPrefixTree, self).__init__()
+        super(SBOMPrefixTree, self).__init__()
         self.sNodeTable = {}
-        self.root = BASBOMTreeNode()
-        self.thetaNode = BASBOMTreeNode()
+        self.root = SBOMTreeNode()
+        self.thetaNode = SBOMTreeNode()
         self.thetaNode.isTheta = True
         self.sNodeTable[self.root] = self.thetaNode
 
@@ -101,14 +101,14 @@ class BASBOMPrefixTree(object):
             char = sample[i]
             child = currentNode.search(char)
             if child == None:
-                newChild = BASBOMTreeNode()
+                newChild = SBOMTreeNode()
                 currentNode.adopt(char, newChild)
                 newChild.parent = currentNode
                 currentNode = newChild
             else:
                 currentNode = child
         currentNode.isEndPoint = True
-        currentNode.suffixTree = BASBOMSuffixTree()
+        currentNode.suffixTree = SBOMSuffixTree()
         for endItem in endInfo:
             currentNode.suffixTree.train(endItem['suffix'], endItem['content'])
     
@@ -159,24 +159,24 @@ class BASBOMPrefixTree(object):
             return
         for key, child in currentNode.children.items():
             if child.isEndPoint == True:
-                print(BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + BAClassUtil.hexAddress(child) + '(end)')
+                print(ClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + ClassUtil.hexAddress(child) + '(end)')
             else:
-                print(BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + BAClassUtil.hexAddress(child))
+                print(ClassUtil.hexAddress(currentNode) + ' + ' + key + ' --> ' + ClassUtil.hexAddress(child))
         for key, child in currentNode.bastards.items():
-            print('    ' + BAClassUtil.hexAddress(currentNode) + ' + ' + key + ' __> ' + BAClassUtil.hexAddress(child))
+            print('    ' + ClassUtil.hexAddress(currentNode) + ' + ' + key + ' __> ' + ClassUtil.hexAddress(child))
         if currentNode.suffixTree != None:
-            print('    ' + BAClassUtil.hexAddress(currentNode) + ' ~~> ' + BAClassUtil.hexAddress(currentNode.suffixTree.root))
+            print('    ' + ClassUtil.hexAddress(currentNode) + ' ~~> ' + ClassUtil.hexAddress(currentNode.suffixTree.root))
             currentNode.suffixTree.fullPrint(currentNode.suffixTree.root)
         for key, child in currentNode.children.items():
             self.fullPrint(child)
 
-class BASBOMUtil(object):
+class SBOMUtil(object):
     def __init__(self):
-        super(BASBOMUtil, self).__init__()
+        super(SBOMUtil, self).__init__()
         self.samples = []
         self.searchWindowLen = 0
         self.samplePrefixDic = {}
-        self.prefixTree = BASBOMPrefixTree()
+        self.prefixTree = SBOMPrefixTree()
 
     def train(self, sample):
         if sample == None or isinstance(sample, str) == False or len(sample) == 0:
@@ -202,7 +202,7 @@ class BASBOMUtil(object):
             self.samplePrefixDic[prefix] = prefixDics
 
         #build prefix tree
-        self.prefixTree = BASBOMPrefixTree()
+        self.prefixTree = SBOMPrefixTree()
         for prefix, prefixDics in self.samplePrefixDic.items():
             self.prefixTree.train(prefix, prefixDics)
 

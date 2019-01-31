@@ -4,20 +4,20 @@
 #Python3 required!
 
 import sys, os
-from BAAlgorithmUtils.BAClassUtil import BAClassUtil
+from BAAlgorithmUtils.ClassUtil import ClassUtil
 
-class BABSTTreeNode(object):
+class BSTTreeNode(object):
     def __init__(self):
-        super(BABSTTreeNode, self).__init__()
+        super(BSTTreeNode, self).__init__()
         self.key = None
         self.content = None
         self.parent = None
         self.left = None
         self.right = None
 
-class BABSTTree(object):
+class BSTTree(object):
     def __init__(self):
-        super(BABSTTree, self).__init__()
+        super(BSTTree, self).__init__()
         self.root = None
 
     def set(self, key, content):
@@ -25,11 +25,11 @@ class BABSTTree(object):
             self.delete(key)
             return
         if self.root == None:
-            self.root = BABSTTreeNode()
+            self.root = BSTTreeNode()
             self.root.key = key
             self.root.content = content
             return
-        newNode = BABSTTreeNode()
+        newNode = BSTTreeNode()
         newNode.key = key
         newNode.content = content
         endNode = self.root
@@ -127,24 +127,24 @@ class BABSTTree(object):
     def fullPrint(self, currentNode):
         if currentNode == None:
             return
-        print(BAClassUtil.hexAddress(currentNode))
+        print(ClassUtil.hexAddress(currentNode))
         print('    key: ' + str(currentNode.key))
         print('    content: ' + str(currentNode.content))
         if currentNode.left == None and currentNode.right == None:
             return
         if currentNode.left != None:
-            print('    left: ' + str(BAClassUtil.hexAddress(currentNode.left)))
+            print('    left: ' + str(ClassUtil.hexAddress(currentNode.left)))
         if currentNode.right != None:
-            print('    right: ' + str(BAClassUtil.hexAddress(currentNode.right)))
+            print('    right: ' + str(ClassUtil.hexAddress(currentNode.right)))
         if currentNode.left != None:
             self.fullPrint(currentNode.left)
         if currentNode.right != None:
             self.fullPrint(currentNode.right)
 
-class BABSTUtil(object):
+class BSTUtil(object):
     def __init__(self):
-        super(BABSTUtil, self).__init__()
-        self.tree = BABSTTree()
+        super(BSTUtil, self).__init__()
+        self.tree = BSTTree()
 
     def set(self, key, content):
         self.tree.set(key, content)

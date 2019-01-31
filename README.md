@@ -7,14 +7,14 @@ Algorithm utils for python
 
 | Algorithm | Code file | Example |
 | :--- | :--- | :--- |
-| Tire tree | `BATireTreeUtil.py` | `BATireTreeUtilTest.py` |
-| Aho-Corasick | `BAAhoCorasickUtil.py` | `BAAhoCorasickUtilTest.py` |
-| KMP | `BAKMPUtil.py` | `BAKMPUtilTest.py` |
-| Boyer-Moore | `BABMUtil.py` | `BABMUtilTest.py` |
-| Horspool | `BAHorspoolUtil.py` | `BAHorspoolUtilTest.py` |
-| SBOM | `BASBOMUtil.py` | `BASBOMUtilTest.py` |
-| Binary Search Tree | `BABSTUtil.py` | `BABSTUtilTest.py` |
+| Tire tree | `TireTreeUtil.py` | `TireTreeUtilTest.py` |
+| Aho-Corasick | `AhoCorasickUtil.py` | `AhoCorasickUtilTest.py` |
+| KMP | `KMPUtil.py` | `KMPUtilTest.py` |
+| Boyer-Moore | `BMUtil.py` | `BMUtilTest.py` |
+| Horspool | `HorspoolUtil.py` | `HorspoolUtilTest.py` |
+| SBOM | `SBOMUtil.py` | `SBOMUtilTest.py` |
+| Binary Search Tree | `BSTUtil.py` | `BSTUtilTest.py` |
 
 Other utils:
 
-- `BAClassUtil.py`
+- `ClassUtil.py`
