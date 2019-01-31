@@ -13,6 +13,7 @@ Algorithm utils for python
 | Boyer-Moore | `BABMUtil.py` | `BABMUtilTest.py` |
 | Horspool | `BAHorspoolUtil.py` | `BAHorspoolUtilTest.py` |
 | SBOM | `BASBOMUtil.py` | `BASBOMUtilTest.py` |
+| Binary Search Tree | `BABSTUtil.py` | `BABSTUtilTest.py` |
 
 Other utils:
 
