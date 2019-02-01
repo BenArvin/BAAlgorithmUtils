@@ -124,7 +124,7 @@ class BSTTree(object):
         else:
             return result.content
     
-    def fullPrint(self, currentNode):
+    def __fullPrint(self, currentNode):
         if currentNode == None:
             return
         print(ClassUtil.hexAddress(currentNode))
@@ -137,23 +137,9 @@ class BSTTree(object):
         if currentNode.right != None:
             print('    right: ' + str(ClassUtil.hexAddress(currentNode.right)))
         if currentNode.left != None:
-            self.fullPrint(currentNode.left)
+            self.__fullPrint(currentNode.left)
         if currentNode.right != None:
-            self.fullPrint(currentNode.right)
-
-class BSTUtil(object):
-    def __init__(self):
-        super(BSTUtil, self).__init__()
-        self.tree = BSTTree()
-
-    def set(self, key, content):
-        self.tree.set(key, content)
-
-    def get(self, key):
-        self.tree.get(key)
+            self.__fullPrint(currentNode.right)
     
-    def delete(self, key):
-        self.tree.delete(key)
-
     def fullPrint(self):
-        self.tree.fullPrint(self.tree.root)
+        self.__fullPrint(self.root)

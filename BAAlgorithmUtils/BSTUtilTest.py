@@ -4,7 +4,7 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.BSTUtil import BSTUtil
+from BAAlgorithmUtils.BSTUtil import BSTTree
 
 def start1():
     print('\n********************************')
@@ -20,22 +20,22 @@ def start1():
         {'key': 9, 'content': '9-1'},
     ]
     trainsString = ''
-    bstUtil = BSTUtil()
+    bstTree = BSTTree()
     for sample in trainSamples:
         trainsString = trainsString + ', ' + str(sample['key'])
-        bstUtil.set(sample['key'], sample['content'])
+        bstTree.set(sample['key'], sample['content'])
     print('Sample: ' + trainsString[2 : len(trainsString)])
     print('\nBST:')
-    bstUtil.fullPrint()
+    bstTree.fullPrint()
     print('\n>>>>>>>>>>>>>> delete 1')
-    bstUtil.delete(1)
-    bstUtil.fullPrint()
+    bstTree.delete(1)
+    bstTree.fullPrint()
     print('\n>>>>>>>>>>>>>> delete 5')
-    bstUtil.delete(5)
-    bstUtil.fullPrint()
+    bstTree.delete(5)
+    bstTree.fullPrint()
     print('\n>>>>>>>>>>>>>> delete 3')
-    bstUtil.delete(3)
-    bstUtil.fullPrint()
+    bstTree.delete(3)
+    bstTree.fullPrint()
     print('********************************\n')
 
 def start2():
@@ -51,13 +51,13 @@ def start2():
         {'key': 3, 'content': '3-1'},
     ]
     trainsString = ''
-    bstUtil = BSTUtil()
+    bstTree = BSTTree()
     for sample in trainSamples:
         trainsString = trainsString + ', ' + str(sample['key'])
-        bstUtil.set(sample['key'], sample['content'])
+        bstTree.set(sample['key'], sample['content'])
     print('Sample: ' + trainsString[2 : len(trainsString)])
     print('\nBST:')
-    bstUtil.fullPrint()
+    bstTree.fullPrint()
     print('********************************\n')
 
 if __name__ == '__main__':
