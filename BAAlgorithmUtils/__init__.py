@@ -6,4 +6,5 @@ __all__ = [
     'BMUtil',
     'HorspoolUtil',
     'SBOMUtil',
-    'BSTUtil']
+    'BSTUtil',
+    'AVLTreeUtil']

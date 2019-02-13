@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="BAAlgorithmUtils",
-    version="2.0.2",
+    version="2.1.2",
     author="BenArvin",
     author_email="niedongsen@yeah.net",
     description="Algorithm utils for python",

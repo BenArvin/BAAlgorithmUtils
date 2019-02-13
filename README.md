@@ -14,6 +14,7 @@ Algorithm utils for python
 | Horspool | `HorspoolUtil.py` | `HorspoolUtilTest.py` |
 | SBOM | `SBOMUtil.py` | `SBOMUtilTest.py` |
 | Binary Search Tree | `BSTUtil.py` | `BSTUtilTest.py` |
+| Adelson-Velsky and Landis Tree | `AVLTreeUtil.py` | `AVLTreeUtilTest.py` |
 
 Other utils:
 
