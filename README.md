@@ -17,6 +17,7 @@ Algorithm utils for python
 | Adelson-Velsky and Landis Tree | `AVLTreeUtil.py` | `AVLTreeUtilTest.py` |
 | Bubble sort | `SortUtil.py` - `bubbleSort` | `SortUtilTest.py` |
 | Selection sort | `SortUtil.py` - `selectionSort` | `SortUtilTest.py` |
+| Quick sort | `SortUtil.py` - `quickSort` | `SortUtilTest.py` |
 
 Other utils:
 

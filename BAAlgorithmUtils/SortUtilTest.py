@@ -6,7 +6,7 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.SortUtil import bubbleSort, selectionSort
+from BAAlgorithmUtils.SortUtil import bubbleSort, selectionSort, quickSort
 
 def bubbleSortTest(originalItems, ascending):
     if ascending == True:
@@ -24,8 +24,18 @@ def selectionSortTest(originalItems, ascending):
     print('Original: ' + str(originalItems))
     print('Sorted: ' + str(selectionSort(originalItems, ascending)))
 
+def quickSortTest(originalItems, ascending):
+    if ascending == True:
+        print('\nQuick sort(Ascending)')
+    else:
+        print('\nQuick sort(Descending)')
+    print('Original: ' + str(originalItems))
+    print('Sorted: ' + str(quickSort(originalItems, ascending)))
+
 if __name__ == '__main__':
     bubbleSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
     bubbleSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
     selectionSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
     selectionSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
+    quickSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
+    quickSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
