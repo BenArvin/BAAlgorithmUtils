@@ -7,4 +7,5 @@ __all__ = [
     'HorspoolUtil',
     'SBOMUtil',
     'BSTUtil',
-    'AVLTreeUtil']
+    'AVLTreeUtil',
+    'SortUtil']
