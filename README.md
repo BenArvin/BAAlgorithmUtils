@@ -16,6 +16,7 @@ Algorithm utils for python
 | Binary Search Tree | `BSTUtil.py` | `BSTUtilTest.py` |
 | Adelson-Velsky and Landis Tree | `AVLTreeUtil.py` | `AVLTreeUtilTest.py` |
 | Bubble sort | `SortUtil.py` - `bubbleSort` | `SortUtilTest.py` |
+| Selection sort | `SortUtil.py` - `selectionSort` | `SortUtilTest.py` |
 
 Other utils:
 
