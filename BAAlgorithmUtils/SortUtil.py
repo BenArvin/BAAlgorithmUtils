@@ -21,6 +21,7 @@ def bubbleSort(originalItems, ascending):
     sortedItems = originalItems
     itemsLen = len(sortedItems)
     for i in range(0, itemsLen - 1, 1):
+        didSwap = False
         for j in range(0, itemsLen - i - 1, 1):
             needSwap = False
             if ascending == True and sortedItems[j] > sortedItems[j+1]:
@@ -30,6 +31,9 @@ def bubbleSort(originalItems, ascending):
 
             if needSwap == True:
                 __swap(sortedItems, j, j+1)
+                didSwap = True
+        if didSwap == False:
+            break
     return sortedItems
 
 def selectionSort(originalItems, ascending):
