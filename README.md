@@ -18,6 +18,7 @@ Algorithm utils for python
 | Bubble sort | `SortUtil.py` - `bubbleSort` | `SortUtilTest.py` |
 | Selection sort | `SortUtil.py` - `selectionSort` | `SortUtilTest.py` |
 | Quick sort | `SortUtil.py` - `quickSort` | `SortUtilTest.py` |
+| Bucket sort | `SortUtil.py` - `bucketSort` | `SortUtilTest.py` |
 
 Other utils:
 

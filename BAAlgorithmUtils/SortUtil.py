@@ -3,7 +3,7 @@
 
 #Python3 required!
 
-import sys
+import sys, math
 
 def __swap(items, i, j):
     if items == None:
@@ -87,3 +87,65 @@ def quickSort(originalItems, ascending):
     sortedItems = originalItems
     __quickSortAction(originalItems, ascending, 0, len(sortedItems) - 1)
     return sortedItems
+
+def __defaultMappingRule(items, current, min, max):
+    return math.floor(current * len(items) / (max + 1))
+
+def bucketSort(originalItems, ascending, mappingRule=__defaultMappingRule):
+    if originalItems == None or len(originalItems) < 2:
+        return originalItems
+
+    max = originalItems[0]
+    min = originalItems[0]
+    for item in originalItems:
+        if item >= max:
+            max = item
+        if item <= min:
+            min = item
+
+    buckets = []
+    for item in originalItems:
+        bucketIndex = mappingRule(originalItems, item, min, max)
+        newBucket = []
+        if len(buckets) <= bucketIndex:
+            while(len(buckets) <= bucketIndex):
+                buckets.append([])
+        else:
+            newBucket = buckets[bucketIndex]
+        
+        newBucketLen = len(newBucket)
+        if newBucketLen == 0:
+            newBucket = [item]
+        else:
+            finded = False
+            lastTmp = item
+            nextTmp = item
+            for i in range(0, newBucketLen, 1):
+                innerItem = newBucket[i]
+                if finded == True:
+                    nextTmp = innerItem
+                    newBucket[i] = lastTmp
+                    lastTmp = nextTmp
+                else:
+                    if innerItem >= item:
+                        finded = True
+                        nextTmp = innerItem
+                        newBucket[i] = lastTmp
+                        lastTmp = nextTmp
+            newBucket.append(lastTmp)
+        buckets[bucketIndex] = newBucket
+    
+    result = []
+    if ascending == True:
+        for i in range(0, len(buckets), 1):
+            bucketItem = buckets[i]
+            bucketItemLen = len(bucketItem)
+            for j in range(0, bucketItemLen, 1):
+                result.append(bucketItem[j])
+    else:
+        for i in range(len(buckets)-1, -1, -1):
+            bucketItem = buckets[i]
+            bucketItemLen = len(bucketItem)
+            for j in range(bucketItemLen-1, -1, -1):
+                result.append(bucketItem[j])
+    return result

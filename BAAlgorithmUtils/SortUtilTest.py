@@ -6,7 +6,7 @@
 import sys, os
 sys.path.append('../')
 
-from BAAlgorithmUtils.SortUtil import bubbleSort, selectionSort, quickSort
+from BAAlgorithmUtils.SortUtil import bubbleSort, selectionSort, quickSort, bucketSort
 
 def bubbleSortTest(originalItems, ascending):
     if ascending == True:
@@ -32,6 +32,14 @@ def quickSortTest(originalItems, ascending):
     print('Original: ' + str(originalItems))
     print('Sorted: ' + str(quickSort(originalItems, ascending)))
 
+def bucketSortTest(originalItems, ascending):
+    if ascending == True:
+        print('\nBucket sort(Ascending)')
+    else:
+        print('\nBucket sort(Descending)')
+    print('Original: ' + str(originalItems))
+    print('Sorted: ' + str(bucketSort(originalItems, ascending)))
+
 if __name__ == '__main__':
     bubbleSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
     bubbleSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
@@ -39,3 +47,5 @@ if __name__ == '__main__':
     selectionSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
     quickSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
     quickSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
+    bucketSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], True)
+    bucketSortTest([3, 44, 38, 5, 5, 47, 15, 36, 26, 27, 2, 46, 15, 4, 19, 50, 48], False)
