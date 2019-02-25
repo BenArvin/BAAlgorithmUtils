@@ -8,4 +8,5 @@ __all__ = [
     'SBOMUtil',
     'BSTUtil',
     'AVLTreeUtil',
-    'SortUtil']
+    'SortUtil',
+    'RBTreeUtil']

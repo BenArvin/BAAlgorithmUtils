@@ -134,11 +134,6 @@ class AVLTree(object):
             else:
                 currentNode = currentNode.left
     
-    def __fullRebalance(self):
-        if self.root == None:
-            return
-        currentNode = self.root
-    
     def __delete(self, currentNode, key):
         if currentNode == None:
             return None
