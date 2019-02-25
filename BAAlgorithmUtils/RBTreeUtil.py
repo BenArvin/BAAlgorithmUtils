@@ -21,6 +21,7 @@ class RBTree(object):
         self.root = None
 
     def __rotateLeft(self, currentNode):
+        # A.left=B, A.right=C => C.left=A, A.left=B
         rightNode = currentNode.right
         parentNode = currentNode.parent
         rightLeftNode = rightNode.left if rightNode != None else None
@@ -43,6 +44,7 @@ class RBTree(object):
         currentNode.parent = rightNode
     
     def __rotateRight(self, currentNode):
+        # A.left=B, A.right=C => B.right=A, A.right=C
         leftNode = currentNode.left
         parentNode = currentNode.parent
         leftRightNode = leftNode.right if leftNode != None else None
